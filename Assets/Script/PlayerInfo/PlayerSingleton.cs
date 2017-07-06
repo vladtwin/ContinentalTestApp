@@ -66,7 +66,7 @@ namespace Assets
                 {
                     int position = cinfo.Characters[level].ImagePosition;
                     if (position < 0)
-                        position = cinfo.id;
+                        position = level - 1;
                     float x1 = size*(cinfo.Characters[level].ImagePosition);
                     img.uvRect=new Rect(new Vector2(x1,0), new Vector2(size,1));
                 }

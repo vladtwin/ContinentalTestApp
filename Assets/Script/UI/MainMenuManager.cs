@@ -40,12 +40,13 @@ public class MainMenuManager : MonoBehaviour
                     {
                         CharacterPropertyesInfo character = DataContractSerializerHelp.Deserialize(Encoding.UTF8.GetBytes(((TextAsset)val).text), typeof(CharacterPropertyesInfo)) as CharacterPropertyesInfo;
                         CharactersSingleton.Singleton.CharactersInfos.Add(character);
-                        GameObject characterObject = GameObject.Instantiate(CharacterPrefab,MainContent.transform,false);
+                        GameObject characterObject = GameObject.Instantiate(CharacterPrefab, MainContent.transform, false);
                         characterObject.GetComponent<CharacterViewController>().PropertyesInfo = character;
+                        
                     }
                     catch (Exception ex)
                     {
-                        Debug.LogError(ex.Message);
+                        Debug.LogError(ex.Message+"\r\n"+ex.StackTrace);
                     }
                 }
 
