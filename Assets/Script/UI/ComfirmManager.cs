@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets;
+using Assets.Script.HelpClass;
 using test;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class ComfirmManager : MonoBehaviour
     public Button BtnOk;
     public Button BtnCansel;
     private CharacterPropertyesInfo _character;
+    public Text TimeText;
 
     public GameObject child;
     public void Start()
@@ -54,6 +56,8 @@ public class ComfirmManager : MonoBehaviour
     public void Init()
     {
         child.SetActive(true);
+        TimeText.text =
+            TimeSpan.FromSeconds(PlayerSingleton.Singleton.GetNowCharacterTDO(_character.id).UpdateTime).GetTimeString();
         MoneyCount.text = PlayerSingleton.Singleton.GetMoneyCountToUpdate(_character.id).ToString();
         PlayerSingleton.Singleton.SetImageToCharacter(ImgCharacter, _character.id);
 
